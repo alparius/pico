@@ -2,8 +2,9 @@
 
 > Code repository for the paper:  
 > [**PICO: Reconstructing 3D People In Contact with Objects**](https://arxiv.org/abs/2504.17695)  
-> [Alpár Cseke](https://is.mpg.de/person/acseke)*, [Shashank Tripathi](https://sha2nkt.github.io/)*, [Sai Kumar Dwivedi](https://saidwivedi.in/), [Arjun Lakshmipathy](https://www.andrew.cmu.edu/user/aslakshm/), [Agniv Chatterjee](https://ac5113.github.io/), [Michael J. Black](https://ps.is.mpg.de/person/black), [Dimitrios Tzionas](https://ps.is.mpg.de/person/dtzionas)<br />
-> *Conference on Computer Vision and Pattern Recognition (CVPR), 2025*
+> [Alpár Cseke\*](https://is.mpg.de/person/acseke), [Shashank Tripathi\*](https://sha2nkt.github.io/), [Sai Kumar Dwivedi](https://saidwivedi.in/), [Arjun Lakshmipathy](https://www.andrew.cmu.edu/user/aslakshm/), [Agniv Chatterjee](https://ac5113.github.io/), [Michael J. Black](https://ps.is.mpg.de/person/black), [Dimitrios Tzionas](https://ps.is.mpg.de/person/dtzionas)<br />
+> *Conference on Computer Vision and Pattern Recognition (CVPR), 2025* <br />
+> \* equal contribution
 
 [![arXiv](https://img.shields.io/badge/arXiv-2309.15273-00ff00.svg)](https://arxiv.org/abs/2504.17695)  [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://pico.is.tue.mpg.de/) [![explore pico-db](https://img.shields.io/badge/explore%20pico--db-up-6c9b1c?style=flat&logo=google-chrome&logoColor=white)](https://pico.is.tue.mpg.de/dataexploration.html)
 
