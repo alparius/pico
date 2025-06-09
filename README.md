@@ -73,17 +73,17 @@ If you find this code useful for your research, please consider citing the follo
 }
 ```
 
-### License
+## License
 
 See [LICENSE](LICENSE).
 
-### Acknowledgments
+## Acknowledgments
 
 We thank Felix Grüninger for advice on mesh preprocessing, Jean-Claude Passy and Valkyrie Felso for advice on the data collection, and Xianghui Xie for advice on HDM evaluation. We also thank Tsvetelina Alexiadis, Taylor Obersat, Claudia Gallatz, Asuka Bertler, Arina Kuznetcova, Suraj Bhor, Tithi Rakshit, Tomasz Niewiadomski, Valerian Fourel and Florentin Doll for their immense help in the data collection and verification process, Benjamin Pellkofer for IT support, and Nikos Athanasiou for the helpful discussions. This work was funded in part by the International Max Planck Research School for Intelligent Systems (IMPRS-IS). D. Tzionas is supported by the ERC Starting Grant (project STRIPES, 101165317).
 
 Dimitris Tzionas has received a research gift fund from Google. While Michael J. Black is a co-founder and Chief Scientist at Meshcapade, his research in this project was performed solely at, and funded solely by, the Max Planck Society.
 
-### Contact
+## Contact
 
 For technical questions, please create an issue. For other questions, please contact `pico@tue.mpg.de`.
 
