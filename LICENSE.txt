@@ -42,9 +42,9 @@ Subjects' Consent: All subjects gave informed written consent to share their dat
 
 Citation:
 
-@inproceedings{cseke_tripathi_2025_cvpr_pico,
+@inproceedings{cseke_tripathi_2025_pico,
     title     = {{PICO}: Reconstructing {3D} People In Contact with Objects},
-    author    = {Alp\'{a}r Cseke and Shashank Tripathi and Sai Kumar Dwivedi and Arjun Lakshmipathy and Agniv Chatterjee and Michael J. Black and Dimitrios Tzionas},
+    author    = {Cseke, Alp\'{a}r and Tripathi, Shashank and Dwivedi, Sai Kumar and Lakshmipathy, Arjun and Chatterjee, Agniv and Black, Michael J. and Tzionas, Dimitrios},
     booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
     month     = {June},
     year      = {2025},

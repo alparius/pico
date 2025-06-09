@@ -10,7 +10,7 @@
 
 ![teaser](assets/teaser.png)
 
-[[Project Page](https://pico.is.tue.mpg.de)] [[Paper](https://arxiv.org/abs/2504.17695)] [[Video]()] [[Poster]()] [[License](https://pico.is.tue.mpg.de/license.html)] [[Contact](mailto:pico@tue.mpg.de)]
+[[Project Page](https://pico.is.tue.mpg.de)] [[Paper](https://arxiv.org/abs/2504.17695)] [[Video]()] [[Poster](https://pico.is.tue.mpg.de/media/upload/static/images/CVPR2025_PICO_Poster.pdf)] [[License](https://pico.is.tue.mpg.de/license.html)] [[Contact](mailto:pico@tue.mpg.de)]
 
 ## News :triangular_flag_on_post:
 
@@ -155,9 +155,9 @@ To train on other datasets, please follow these steps:
 If you find this code useful for your research, please consider citing the following paper:
 
 ```bibtex
-@inproceedings{cseke_tripathi_2025_cvpr_pico,
+@inproceedings{cseke_tripathi_2025_pico,
     title     = {{PICO}: Reconstructing {3D} People In Contact with Objects},
-    author    = {Alp\'{a}r Cseke and Shashank Tripathi and Sai Kumar Dwivedi and Arjun Lakshmipathy and Agniv Chatterjee and Michael J. Black and Dimitrios Tzionas},
+    author    = {Cseke, Alp\'{a}r and Tripathi, Shashank and Dwivedi, Sai Kumar and Lakshmipathy, Arjun and Chatterjee, Agniv and Black, Michael J. and Tzionas, Dimitrios},
     booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
     month     = {June},
     year      = {2025},
