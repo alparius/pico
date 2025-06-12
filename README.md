@@ -14,7 +14,7 @@
 
 ## News :triangular_flag_on_post:
 
-- [2025/06/10] PICO-fit* optimization script is released!
+- [2025/06/11] PICO-fit* optimization script is released!
 
 ## Installation and Setup
 1. First, clone the repo. Then, we recommend creating a clean [conda](https://docs.conda.io/) environment, as follows:
@@ -43,22 +43,29 @@ Hence, users may alternatively install Pytorch3D from source.
 pip install "git+https://github.com/facebookresearch/pytorch3d.git@stable"
 ```
 
-5. Download some required files (see the script for details):
-```bash
-sh fetch_data.sh
+<!-- 5. Install the SDF-based collision loss library:
+- Put the `sdf` folder from [this repo](https://github.com/JiangWenPL/multiperson) under `src/utils/`
+- in the `sdf/csrc/sdf_cuda.cpp` file, add:
 ```
+    #ifndef AT_CHECK 
+    #define AT_CHECK TORCH_CHECK 
+    #endif
+```
+- run `python setup.py install` -->
 
-## Run the Demo
+6. Download some required files:
+- run `sh fetch_static.sh` (see the script for details)
+- download the smplx model files from [here](https://download.is.tue.mpg.de/download.php?domain=smplx&sfile=models_smplx_v1_1.zip). Put `SMPLX_NEUTRAL.npz` under `static/human_model_files/smplx/`
+
+## Download the PICO-db dataset
+
+Register an account on the [PICO website](https://pico.is.tue.mpg.de) to be able to access the subpage to download the dataset.
+
+## Run the PICO-fit demo
 
 ```
-./demo.sh <folder_path_with_inputs> <folder_path_for_outputs>
+python demo.py <folder_path_with_inputs> <folder_path_for_outputs>
 ```
-
-Required files in the input folder:
-- ...
-
-
-
 
 ## Citing
 If you find this code useful for your research, please consider citing the following paper:

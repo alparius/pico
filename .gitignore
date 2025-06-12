@@ -1,0 +1,14 @@
+# ide
+.idea/
+__pycache__/
+
+# data
+demo_input/
+demo_output/
+
+# aux
+static/
+
+# drafts
+draft*
+*_poc/
