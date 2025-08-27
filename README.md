@@ -67,6 +67,15 @@ Register an account on the [PICO website](https://pico.is.tue.mpg.de) to be able
 python demo.py <folder_path_with_inputs> <folder_path_for_outputs>
 ```
 
+## OpenShape-based object retrieval
+
+Please refer to the following repository for efficient object lookup and retrieval from a single image.  
+The same object retrieval strategy was used in both PICO and [InteractVLM](https://interactvlm.is.tue.mpg.de/).
+
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Object__Retrieval-blue?logo=github)](https://github.com/saidwivedi/Object_Retrieval)
+
+
+
 ## Citing
 If you find this code useful for your research, please consider citing the following paper:
 
