@@ -21,11 +21,14 @@ def main(
     if loss_weights is None:
         loss_weights = default_loss_weights
 
-    img_filename = input_folder.split("/")[-1]  
-    img = load_image(os.path.join(input_folder, img_filename))
+    img_filename = input_folder.split("/")[-1]
+    for format in ['.png', '.jpg', '.jpeg']:
+        if os.path.exists(os.path.join(input_folder, img_filename + format)):
+            break
+    img = load_image(os.path.join(input_folder, img_filename + format))
 
-    if os.path.exists(os.path.join(output_folder, img_filename)):
-        print(f"--> Skipping {img_filename} as it has already been processed.")
+    if os.path.exists(os.path.join(output_folder)):
+        print(f"--> Skipping folder '{img_filename}' as it has already been processed.")
         return
 
 

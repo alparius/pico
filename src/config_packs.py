@@ -14,9 +14,9 @@ class ConfigPack:
         self,
         # input file names
         human_inference_file: str = 'osx_human.npz',
-        human_detection_file: str = 'human_detection.json',
+        human_detection_file: str = 'human_detection.npz',
         object_mesh_file: str = 'object.obj',
-        object_detection_file: str = 'object_detection.json',
+        object_detection_file: str = 'object_detection.npz',
         contact_mapping_file: str = 'corresponding_contacts.json',
         # optimization nr of steps
         nr_phase_1_steps: int = 250,

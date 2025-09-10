@@ -15,6 +15,11 @@
 ## News :triangular_flag_on_post:
 
 - [2025/06/11] PICO-fit* optimization script is released!
+- [2025/09/10] Added auxiliary files for PICO-fit* optimization as reference
+
+#### coming soon:
+- nearest neighbour lookup script in PICO-db for in-the-wild images
+- occlusion module installation help
 
 ## Installation and Setup
 1. First, clone the repo. Then, we recommend creating a clean [conda](https://docs.conda.io/) environment, as follows:
@@ -59,13 +64,33 @@ pip install "git+https://github.com/facebookresearch/pytorch3d.git@stable"
 
 ## Download the PICO-db dataset
 
-Register an account on the [PICO website](https://pico.is.tue.mpg.de) to be able to access the subpage to download the dataset.
+Register an account on the [PICO website](https://pico.is.tue.mpg.de) to be able to access the subpage to download the dataset. The dataset consists of the selected object mesh for each image and a contact map between the SMPL-X human mesh and the aforementioned object mesh.
 
 ## Run the PICO-fit demo
 
 ```
 python demo.py <folder_path_with_inputs> <folder_path_for_outputs>
 ```
+e.g.:
+```
+python demo.py demo_input/skateboard__vcoco_000000012938 demo_output/skateboard__vcoco_000000012938
+```
+
+The input folder has to include the following files:
+- the input image that has the same filename as the folder itself (plus an image extension)
+- `osx_human.npz`: human pose and shape data
+- `human_detection.npz`, `object_detection.npz`: mask and bbox for the two subjects
+- `object.obj`: trimesh file of the object the human interacts with
+- `corresponding_contacts.json`: contact mapping data
+
+#### For PICO-db images:
+- the latter two files make up the dataset itself that you can download from the above link
+- there we also include the other 3 files for most of the samples in another archive, but feel free to bring your own inference results.
+
+<!-- #### For brand new in-the-wild images:
+-  please refer to the **TODO** script for doing nearest-neighbor lookup on PICO-db. This gives you the object's mesh and the contact mapping
+- the other 3 `.npz` files you will have to provide yourself with the off-the-shelf methods of your choice -->
+
 
 ## OpenShape-based object retrieval
 

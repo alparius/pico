@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 import trimesh
-import json
 
 from src.constants import IMAGE_SIZE, SMPLX_FACES_PATH
 from src.utils.structs import HumanParams, ObjectParams
@@ -27,7 +26,7 @@ def load_human_params(human_inference_file: str, human_detection_file: str, imgs
     # TODO: provide the OSX inference wrapper
 
     # check if multiple humans are detected
-    if len(human_npz['bbox_2']) > 1:
+    if len(human_npz['bbox']) > 1:
         raise NotImplementedError("Multiple humans detected")
     
     vertices = human_npz['smpl_vertices'][0]
@@ -50,8 +49,7 @@ def load_human_params(human_inference_file: str, human_detection_file: str, imgs
         'expression': human_npz['hps_expression']
     }
 
-    with open(human_detection_file, 'r') as f:
-        detection = json.load(f)
+    detection = np.load(human_detection_file)
     mask = np.array(detection['mask']).astype(float)
     # resize to image size
     mask = cv2.resize(mask, (imgsize[1], imgsize[0]))
@@ -60,7 +58,7 @@ def load_human_params(human_inference_file: str, human_detection_file: str, imgs
         vertices = human_mesh.vertices,
         faces = faces,
         centroid_offset = centroid_offset.copy(),
-        bbox = human_npz['bbox_2'][0],
+        bbox = human_npz['bbox'][0],
         mask = mask,
         smplx_params = smplx_params
     )
@@ -79,8 +77,7 @@ def load_object_params(object_mesh_file: str, object_detection_file: str, imgsiz
     obj_mesh.apply_translation(-obj_mesh.centroid)
 
     # load object mask and resize to image size
-    with open(object_detection_file, 'r') as f:
-        detection = json.load(f)
+    detection = np.load(object_detection_file)
     mask = np.array(detection['mask']).astype(float)
     mask = cv2.resize(mask, (imgsize[1], imgsize[0]))
 
