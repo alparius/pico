@@ -3,14 +3,13 @@ import torch.nn as nn
 import trimesh
 from tqdm.auto import tqdm
 import numpy as np
-import cv2
 import smplx
 
 from src.constants import HUMAN_MODEL_PATH, SMPLX_LAYER_ARGS
 from src.utils.contact_mapping import calculate_human_points, interpret_contact_points, select_pose_parameters
 from src.utils.renderer_out import MySoftSilhouetteRenderer
 from src.utils.structs import HumanParams, ObjectParams
-# from src.utils.sdf.sdf.sdf_loss import SDFLoss # TODO: collision loss temporarily disabled
+from src.utils.sdf.sdf.sdf_loss import SDFLoss
 
 
 class Phase_3_Optimizer(nn.Module):
@@ -78,7 +77,7 @@ class Phase_3_Optimizer(nn.Module):
         self.renderer = MySoftSilhouetteRenderer(img.shape, human_params.faces, human_params.bbox)
 
         # SDF collision loss setup
-        # self.sdf_loss = SDFLoss(human_params.faces, robustifier=1.0) # TODO: collision loss temporarily disabled
+        self.sdf_loss = SDFLoss(human_params.faces, robustifier=1.0)
 
 
     def get_smplx_body_pose(self):
@@ -110,10 +109,9 @@ class Phase_3_Optimizer(nn.Module):
         loss = torch.nn.functional.mse_loss(new_human_points, self.object_points)
         return {"loss_contact": loss}
 
-    # TODO: collision loss temporarily disabled    
-    # def calculate_collision_loss(self, upd_human_vertices):
-    #     loss = self.sdf_loss(upd_human_vertices, self.obj_vertices)
-    #     return {"loss_collision_p3": loss}
+    def calculate_collision_loss(self, upd_human_vertices):
+        loss = self.sdf_loss(upd_human_vertices, self.obj_vertices)
+        return {"loss_collision_p3": loss}
     
     def calculate_pose_reg_loss(self):
         loss = torch.nn.functional.mse_loss(self.smplx_body_pose_opt, self.smplx_body_pose_init[:, self.body_pose_indices_to_opt])
@@ -146,9 +144,8 @@ class Phase_3_Optimizer(nn.Module):
         loss_dict = {}
         if loss_weights["lw_contact"] > 0:
             loss_dict.update(self.calculate_contact_loss(upd_human_vertices))
-        # TODO: collision loss temporarily disabled
-        # if loss_weights["lw_collision_p3"] > 0:
-        #     loss_dict.update(self.calculate_collision_loss(upd_human_vertices))
+        if loss_weights["lw_collision_p3"] > 0:
+            loss_dict.update(self.calculate_collision_loss(upd_human_vertices))
         if loss_weights["lw_pose_reg"] > 0:
             loss_dict.update(self.calculate_pose_reg_loss())
         if loss_weights["lw_silhouette_human"] > 0:

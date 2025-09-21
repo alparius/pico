@@ -16,10 +16,10 @@
 
 - [2025/06/11] PICO-fit* optimization script is released!
 - [2025/09/10] Added auxiliary files for PICO-fit* optimization as reference
+- [2025/09/21] Added back collision loss module, with installation help
 
 #### coming soon:
 - nearest neighbour lookup script in PICO-db for in-the-wild images
-- occlusion module installation help
 
 ## Installation and Setup
 1. First, clone the repo. Then, we recommend creating a clean [conda](https://docs.conda.io/) environment, as follows:
@@ -48,15 +48,9 @@ Hence, users may alternatively install Pytorch3D from source.
 pip install "git+https://github.com/facebookresearch/pytorch3d.git@stable"
 ```
 
-<!-- 5. Install the SDF-based collision loss library:
-- Put the `sdf` folder from [this repo](https://github.com/JiangWenPL/multiperson) under `src/utils/`
-- in the `sdf/csrc/sdf_cuda.cpp` file, add:
-```
-    #ifndef AT_CHECK 
-    #define AT_CHECK TORCH_CHECK 
-    #endif
-```
-- run `python setup.py install` -->
+5. Install the SDF-based collision loss library:
+- based on https://github.com/JiangWenPL/multiperson/tree/master/sdf
+- go to `src/utils/sdf` and run `python setup.py install`
 
 6. Download some required files:
 - run `sh fetch_static.sh` (see the script for details)

@@ -3,8 +3,8 @@ default_loss_weights = {
     'lw_silhouette': 0.3,
     'lw_silhouette_distance': 0.3,
     'lw_scale': 4,
-    # 'lw_collision_p2': 100, TODO: collision loss temporarily disabled
-    # 'lw_collision_p3': 50, TODO: collision loss temporarily disabled
+    'lw_collision_p2': 100,
+    'lw_collision_p3': 50,
     'lw_pose_reg': 0.05,
     'lw_silhouette_human': 0.1,
 }

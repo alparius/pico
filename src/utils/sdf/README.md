@@ -1,6 +1,9 @@
-Based on https://github.com/JiangWenPL/multiperson/tree/master/sdf
+- based on https://github.com/JiangWenPL/multiperson/tree/master/sdf
+- rewritten sdf loss forward function to work with arbitrary object meshes
+- updated csrc code for more recent pytorch/cuda compatibility
+---
 
-Original readme:
+Original README:
 
 ## Implementation of the SDF Loss
 

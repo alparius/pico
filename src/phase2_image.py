@@ -4,13 +4,12 @@ import trimesh
 from tqdm.auto import tqdm
 import numpy as np
 from scipy import ndimage
-import cv2
 
 from src.utils.contact_mapping import calculate_object_points, interpret_contact_points, apply_transformation
 from src.utils.geometry import rot6d_to_matrix
 from src.utils.renderer_out import MySoftSilhouetteRenderer
 from src.utils.structs import HumanParams, ObjectParams
-# from src.utils.sdf.sdf.sdf_loss import SDFLoss # TODO: collision loss temporarily disabled
+from src.utils.sdf.sdf.sdf_loss import SDFLoss
 
 
 class Phase_2_Optimizer(nn.Module):
@@ -50,7 +49,7 @@ class Phase_2_Optimizer(nn.Module):
         self.register_buffer('dist_mat', torch.tensor(dist_mat, device='cuda'))
 
         # SDF collision loss setup
-        # self.sdf_loss = SDFLoss(human_params.faces, robustifier=1.0) TODO: collision loss temporarily disabled
+        self.sdf_loss = SDFLoss(human_params.faces, robustifier=1.0)
 
 
     def calculate_contact_loss(self, upd_obj_vertices):
@@ -63,10 +62,9 @@ class Phase_2_Optimizer(nn.Module):
         loss = torch.nn.functional.mse_loss(self.obj_init_scaling, self.scaling)
         return {"loss_scale": loss}
     
-    # TODO: collision loss temporarily disabled
-    # def calculate_collision_loss(self, upd_obj_vertices):
-    #     loss = self.sdf_loss(self.hum_vertices, upd_obj_vertices)
-    #     return {"loss_collision_p2": loss}
+    def calculate_collision_loss(self, upd_obj_vertices):
+        loss = self.sdf_loss(self.hum_vertices, upd_obj_vertices)
+        return {"loss_collision_p2": loss}
     
     def calculate_centroid(self, mask):
         coords = torch.nonzero(mask, as_tuple=False)
@@ -110,9 +108,8 @@ class Phase_2_Optimizer(nn.Module):
             loss_dict.update(self.calculate_silhouette_loss_iou(upd_obj_vertices, distance_penalty=loss_weights["lw_silhouette_distance"]))
         if loss_weights["lw_scale"] > 0:
             loss_dict.update(self.calculate_scale_loss())
-        # TODO: collision loss temporarily disabled
-        # if loss_weights["lw_collision_p2"] > 0:
-        #     loss_dict.update(self.calculate_collision_loss(upd_obj_vertices))
+        if loss_weights["lw_collision_p2"] > 0:
+            loss_dict.update(self.calculate_collision_loss(upd_obj_vertices))
 
         return loss_dict
    
