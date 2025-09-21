@@ -17,9 +17,7 @@
 - [2025/06/11] PICO-fit* optimization script is released!
 - [2025/09/10] Added auxiliary files for PICO-fit* optimization as reference
 - [2025/09/21] Added back collision loss module, with installation help
-
-#### coming soon:
-- nearest neighbour lookup script in PICO-db for in-the-wild images
+- [2025/09/22] Closest match lookup script in PICO-db for new input images
 
 ## Installation and Setup
 1. First, clone the repo. Then, we recommend creating a clean [conda](https://docs.conda.io/) environment, as follows:
@@ -81,9 +79,9 @@ The input folder has to include the following files:
 - the latter two files make up the dataset itself that you can download from the above link
 - there we also include the other 3 files for most of the samples in another archive, but feel free to bring your own inference results.
 
-<!-- #### For brand new in-the-wild images:
--  please refer to the **TODO** script for doing nearest-neighbor lookup on PICO-db. This gives you the object's mesh and the contact mapping
-- the other 3 `.npz` files you will have to provide yourself with the off-the-shelf methods of your choice -->
+#### For brand new images:
+-  please refer to the `notebooks/contact_lookup_on_dataset.ipynb` script as an example for doing closest match lookup in PICO-db. This finds the closest contact sample (and corresponding object mesh) in the database given the human contact data, which then can be used to reconstruct the interaction from the new image. See the second cell of the notebook for more details.
+- the other 3 `.npz` files you will have to provide yourself with the off-the-shelf methods of your choice
 
 
 ## OpenShape-based object retrieval
