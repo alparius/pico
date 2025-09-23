@@ -18,6 +18,7 @@
 - [2025/09/10] Added auxiliary files for PICO-fit* optimization as reference
 - [2025/09/21] Added back collision loss module, with installation help
 - [2025/09/22] Closest match lookup script in PICO-db for new input images
+- [2025/09/23] Example script on how to load PICO-db contact mappings
 
 ## Installation and Setup
 1. First, clone the repo. Then, we recommend creating a clean [conda](https://docs.conda.io/) environment, as follows:
